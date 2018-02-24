@@ -17,6 +17,15 @@ public class Main {
 
         grid.createGrid();
 
+        // CURSOR
+
+        Cursor cursor = new Cursor(grid);
+
+        // INPUT HANDLER
+
+        InputHandler inputHandler = new InputHandler(cursor);
+
+
 
     }
 }

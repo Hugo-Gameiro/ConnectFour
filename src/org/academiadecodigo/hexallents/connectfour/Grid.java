@@ -27,10 +27,13 @@ public class Grid {
 
                 cells[col][row] = new Cell(col * Cell.CELL_SIZE, row * Cell.CELL_SIZE);
             }
-
         }
-
     }
+
+
+
+
+
 
     public int getCols() {
         return cols;

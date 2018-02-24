@@ -40,6 +40,9 @@ public class Cell {
         return rectangle.getColor();
     }
 
+    public void fillCell() {
+        rectangle.fill();
+    }
 
 
 
