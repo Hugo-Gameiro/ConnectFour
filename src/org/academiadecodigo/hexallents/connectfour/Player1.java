@@ -5,17 +5,11 @@ import org.academiadecodigo.simplegraphics.graphics.Color;
 /**
  * Created by codecadet on 24/02/2018.
  */
-public class Main {
+public class Player1 {
 
-    public static void main(String[] args) {
+    private Color color;
 
-        // GAME
-
-        Game connectFour = new Game();
-
-        connectFour.startGame();
-
-
-
+    public Player1() {
+        color = Color.RED;
     }
 }

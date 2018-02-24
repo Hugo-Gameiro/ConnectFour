@@ -10,7 +10,7 @@ public class Cursor {
     private Grid grid;
     private Rectangle rectangle;
     private int col;
-    private int row;
+
 
     public Cursor(Grid grid){
         this.grid = grid;
@@ -31,4 +31,22 @@ public class Cursor {
             rectangle.translate(- Cell.CELL_SIZE, 0);
         }
     }
+
+    public void dropCoin() {
+
+        // verifica qual a coluna
+        // col --> valor de coluna atualizado
+
+
+        // ve se é possivel inserir mais moedas
+
+
+
+        // insere a moeda  na última posição disponivel da coluna
+
+    }
+    public int cursorCol() {
+        return col;
+    }
+
 }

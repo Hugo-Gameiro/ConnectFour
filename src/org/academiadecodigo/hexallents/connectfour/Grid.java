@@ -1,6 +1,8 @@
 package org.academiadecodigo.hexallents.connectfour;
 
 
+import org.academiadecodigo.simplegraphics.graphics.Color;
+
 /**
  * Created by codecadet on 24/02/2018.
  */
@@ -29,10 +31,6 @@ public class Grid {
             }
         }
     }
-
-
-
-
 
 
     public int getCols() {
