@@ -1,5 +1,8 @@
 package org.academiadecodigo.hexallents.connectfour;
 
+import org.academiadecodigo.hexallents.connectfour.player.Player1;
+import org.academiadecodigo.hexallents.connectfour.player.Player2;
+
 /**
  * Created by codecadet on 24/02/2018.
  */

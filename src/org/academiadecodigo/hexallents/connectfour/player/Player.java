@@ -1,4 +1,4 @@
-package org.academiadecodigo.hexallents.connectfour;
+package org.academiadecodigo.hexallents.connectfour.player;
 
 import org.academiadecodigo.simplegraphics.graphics.Color;
 

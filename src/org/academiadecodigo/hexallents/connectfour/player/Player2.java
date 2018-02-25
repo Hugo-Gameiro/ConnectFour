@@ -1,15 +1,16 @@
-package org.academiadecodigo.hexallents.connectfour;
+package org.academiadecodigo.hexallents.connectfour.player;
 
 import org.academiadecodigo.simplegraphics.graphics.Color;
 
 /**
  * Created by codecadet on 24/02/2018.
  */
-public class Player1 {
+public class Player2 {
 
     private Color color;
 
-    public Player1() {
-        color = Color.RED;
+    public Player2() {
+        color = Color.BLUE;
     }
 }
+
