@@ -32,6 +32,39 @@ public class Grid {
         }
     }
 
+    public void dropCoin(int col, Color color) {
+
+        for (row = rows - 1  ; row > 0; row--) {
+
+           if (!cells[col][row].getPainted()) {
+               cells[col][row].setColor(color);
+               cells[col][row].isPainted();
+
+
+           }
+
+
+
+       }
+
+        // col --> valor de coluna atualizado
+
+
+        // ve se é possivel/ inserir mais moedas
+
+
+        // insere a moeda  na última posição disponivel da coluna
+
+    }
+
+    public boolean checkVictory() {
+
+        if ()
+        // verifica se alguem ganhou
+        // retorna true em vitoria
+        return true;
+    }
+
 
     public int getCols() {
         return cols;

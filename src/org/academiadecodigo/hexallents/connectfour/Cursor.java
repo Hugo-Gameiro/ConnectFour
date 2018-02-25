@@ -1,5 +1,6 @@
 package org.academiadecodigo.hexallents.connectfour;
 
+import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 
 /**
@@ -32,21 +33,17 @@ public class Cursor {
         }
     }
 
-    public void dropCoin() {
-
-        // verifica qual a coluna
-        // col --> valor de coluna atualizado
-
-
-        // ve se é possivel inserir mais moedas
-
-
-
-        // insere a moeda  na última posição disponivel da coluna
-
+    public void cursorDropCoin() {
+        grid.dropCoin(col, rectangle.getColor());
     }
-    public int cursorCol() {
+
+    public int getCursorCol() {
         return col;
+    }
+
+    public void setColor(Color colorPlayer) {
+        rectangle.setColor(colorPlayer);
+
     }
 
 }

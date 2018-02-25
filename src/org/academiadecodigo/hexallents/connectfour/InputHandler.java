@@ -48,7 +48,7 @@ public class InputHandler implements KeyboardHandler {
                 break;
 
             case KeyboardEvent.KEY_SPACE:
-                cursor.dropCoin();
+                cursor.cursorDropCoin();
                 break;
 
             default:

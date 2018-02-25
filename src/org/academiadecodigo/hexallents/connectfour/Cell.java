@@ -14,27 +14,23 @@ public class Cell {
     public static final int PADDING = 10;
     private Rectangle rectangle;
     private Color color;
-    private boolean isOccupied;
+    private boolean isPainted;
 
 
     public Cell(int col, int row) {
         this.col = col;
         this.row = row;
-        isOccupied = false;
+        isPainted = false;
         rectangle = new Rectangle(col + PADDING, row + PADDING, CELL_SIZE, CELL_SIZE);
         rectangle.draw();
 
     }
 
-    public void setColorBlue() {
-        rectangle.setColor(Color.BLUE);
+    public void setColor(Color color) {
+        rectangle.setColor(color);
         rectangle.fill();
     }
 
-    public void setColorRed() {
-        rectangle.setColor(Color.RED);
-        rectangle.fill();
-    }
 
     public Color getColor() {
         return rectangle.getColor();
@@ -44,6 +40,13 @@ public class Cell {
         rectangle.fill();
     }
 
+    public void isPainted() {
+        isPainted = true;
+    }
+
+    public boolean getPainted() {
+        return isPainted;
+    }
 
 
 }
