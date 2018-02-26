@@ -61,6 +61,7 @@ public class Grid {
 
                 if (cells[col][row].isPainted()) {
 
+                    //verificar se um destes métedos é verdadeiro para concluir o jogo
                     checkRow(col, row);
                     checkCol(col, row);
                     checkDiagonalUp(col, row);
@@ -71,6 +72,7 @@ public class Grid {
             return true;
 
         }
+        return false;
     }
 
     public boolean checkRow(int col, int row) {

@@ -45,7 +45,6 @@ public class Cell {
     }
 
     public boolean isPainted() {
-    public boolean getPainted() {
         return isPainted;
     }
 }
