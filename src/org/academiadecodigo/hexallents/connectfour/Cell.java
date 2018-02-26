@@ -40,13 +40,12 @@ public class Cell {
         rectangle.fill();
     }
 
-    public void isPainted() {
+    public void setPainted() {
         isPainted = true;
     }
 
+    public boolean isPainted() {
     public boolean getPainted() {
         return isPainted;
     }
-
-
 }

@@ -34,20 +34,15 @@ public class Grid {
 
     public void dropCoin(int col, Color color) {
 
-        for (row = rows - 1  ; row > 0; row--) {
+        //insert coin if row available
+        for (row = rows - 1; row > 0; row--) {
 
-           if (!cells[col][row].getPainted()) {
-               cells[col][row].setColor(color);
-               cells[col][row].isPainted();
+            if (!cells[col][row].isPainted()) {
+                cells[col][row].setColor(color);
+                cells[col][row].setPainted();
+            }
+        }
 
-
-           }
-
-
-
-       }
-
-        // col --> valor de coluna atualizado
 
 
         // ve se é possivel/ inserir mais moedas
@@ -59,12 +54,105 @@ public class Grid {
 
     public boolean checkVictory() {
 
-        if ()
-        // verifica se alguem ganhou
-        // retorna true em vitoria
-        return true;
+        // verifica se alguém ganhou
+        for (col = 0; col < cols; col++) {
+
+            for (row = 0; row < rows; row++) {
+
+                if (cells[col][row].isPainted()) {
+
+                    checkRow(col, row);
+                    checkCol(col, row);
+                    checkDiagonalUp(col, row);
+                    checkDiagonalDown(col, row);
+                }
+            }
+
+            return true;
+
+        }
     }
 
+    public boolean checkRow(int col, int row) {
+
+        Color tempColor = cells[col][row].getColor();
+        int counter = 0;
+        for (row = row; row < row + 4; row++) {
+            if (cells[col][row].getColor() == null) {
+                return false;
+            }
+
+            if (cells[col][row].getColor() == tempColor) {
+                counter++;
+            }
+
+            if (counter == 3) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean checkCol(int col, int row) {
+
+        Color tempColor = cells[col][row].getColor();
+        int counter = 0;
+        for (col = col; col < col + 4; col++) {
+            if (cells[col][row].getColor() == null) {
+                return false;
+            }
+
+            if (cells[col][row].getColor() == tempColor) {
+                counter++;
+            }
+
+            if (counter == 3) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean checkDiagonalUp(int col, int row) {
+
+        Color tempColor = cells[col][row].getColor();
+        int counter = 0;
+        for (col = col; col < col + 4; col++) {
+            if (cells[col+1][row-1].getColor() == null) {
+                return false;
+            }
+
+            if (cells[col][col].getColor() == tempColor) {
+                counter++;
+            }
+
+            if (counter == 3) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+
+    public boolean checkDiagonalDown(int col, int row) {
+
+        Color tempColor = cells[col][row].getColor();
+        int counter = 0;
+        for (col = col; col < col + 4; col++) {
+            if (cells[col+1][row+1].getColor() == null) {
+                return false;
+            }
+
+            if (cells[col][col].getColor() == tempColor) {
+                counter++;
+            }
+
+            if (counter == 3) {
+                return true;
+            }
+        }
+        return false;
+    }
 
     public int getCols() {
         return cols;
