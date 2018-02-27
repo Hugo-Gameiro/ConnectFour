@@ -29,6 +29,7 @@ public class Cell {
     public void setColor(Color color) {
         rectangle.setColor(color);
         rectangle.fill();
+
     }
 
 

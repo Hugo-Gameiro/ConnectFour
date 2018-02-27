@@ -26,11 +26,15 @@ public class Game {
 
         keyboard = new InputHandler(cursor);
 
-        initGame(player1, cursor);
+        initGame(player1, cursor, grid);
     }
 
-    public void initGame(Player player, Cursor cursor) {
+    public void initGame(Player player, Cursor cursor, Grid grid) {
 
         cursor.setColor(player.getColor());
+
+        // temos de receber instrução que o jogador fez o seu move já validado
+
+        grid.checkVictory();
     }
 }

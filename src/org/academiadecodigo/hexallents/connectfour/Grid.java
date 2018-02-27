@@ -40,7 +40,12 @@ public class Grid {
             if (!cells[col][row].isPainted()) {
                 cells[col][row].setColor(color);
                 cells[col][row].setPainted();
+
+
+                checkVictory();
+                return;
             }
+
         }
 
         // ve se é possivel/ inserir mais moedas
@@ -55,32 +60,34 @@ public class Grid {
         // verifica se alguém ganhou
         for (col = 0; col < cols; col++) {
 
-            for (row = 0; row < rows; row++) {
+            for (row = 1; row < rows; row++) {
 
                 if (cells[col][row].isPainted()) {
 
-                    //verificar se um destes métedos é verdadeiro para concluir o jogo
+                    // verificar se um destes métedos é verdadeiro para concluir o jogo
                     checkRow(col, row);
                     checkCol(col, row);
                     checkDiagonalUp(col, row);
                     checkDiagonalDown(col, row);
-
-                    System.out.println("Win checked!");
+                    continue;
                 }
             }
-            return true;
         }
         return false;
     }
 
-    public boolean checkRow(int col, int row) {
+    public boolean checkCol(int col, int row) {
 
         Color tempColor = cells[col][row].getColor();
+
         int counter = 0;
-        if (row + 3 > rows) {
+        int victCol = row + 3;
+
+        if (victCol > rows - 1 ) {
             return false;
         }
-        for (row = row; row < row + 4; row++) {
+
+        for (row = row + 1 ; row < victCol; row++) {
             if (cells[col][row].getColor() == null) {
                 return false;
             }
@@ -96,15 +103,23 @@ public class Grid {
         return false;
     }
 
-    public boolean checkCol(int col, int row) {
+    public boolean checkRow(int col, int row) {
 
-        if (col + 3 > cols) {
+        int victCol = col + 3;
+        if (victCol > cols - 1) {
+            System.out.println("saiu");
             return false;
         }
+        System.out.println(col + " " + row);
         Color tempColor = cells[col][row].getColor();
+
+
         int counter = 0;
-        for (col = col; col < col + 4; col++) {
-            if (cells[col][row].getColor() == null) {
+        for (col = col + 1; col <= victCol; col++) {
+
+            System.out.println(col + " " + row);
+
+            if (cells[col][row].getColor() != tempColor) {
                 return false;
             }
 
@@ -113,6 +128,7 @@ public class Grid {
             }
 
             if (counter == 3) {
+                System.out.println("win");
                 return true;
             }
         }
@@ -121,13 +137,16 @@ public class Grid {
 
     public boolean checkDiagonalUp(int col, int row) {
 
-        if ((col + 3) > cols || (row - 3) < 0) {
+        int victCol = col + 3;
+        int victRow = row - 3;
+
+        if ((victCol) > cols - 1 || (victRow) < 0) {
             return false;
         }
 
         Color tempColor = cells[col][row].getColor();
         int counter = 0;
-        for (col = col; col < col + 4; col++) {
+        for (col = col + 1 ; col < victCol; col++) {
             if (cells[col + 1][row - 1].getColor() == null) {
                 return false;
             }
@@ -137,6 +156,7 @@ public class Grid {
             }
 
             if (counter == 3) {
+                System.out.println("win");
                 return true;
             }
         }
@@ -148,12 +168,15 @@ public class Grid {
 
         Color tempColor = cells[col][row].getColor();
 
-        if ((col + 3) > cols || row + 3 > rows) {
+        int victCol = col + 3;
+        int victRow = row + 3;
+
+        if ((victCol) > cols - 1 || victRow > rows - 1 ) {
             return false;
         }
 
         int counter = 0;
-        for (col = col; col < col + 4; col++) {
+        for (col = col + 1; col < victCol; col++) {
             if (cells[col + 1][row + 1].getColor() == null) {
                 return false;
             }
@@ -163,6 +186,8 @@ public class Grid {
             }
 
             if (counter == 3) {
+
+                System.out.println("win");
                 return true;
             }
         }
