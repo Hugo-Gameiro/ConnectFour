@@ -43,8 +43,6 @@ public class Grid {
             }
         }
 
-
-
         // ve se é possivel/ inserir mais moedas
 
 
@@ -66,11 +64,11 @@ public class Grid {
                     checkCol(col, row);
                     checkDiagonalUp(col, row);
                     checkDiagonalDown(col, row);
+
+                    System.out.println("Win checked!");
                 }
             }
-
             return true;
-
         }
         return false;
     }
@@ -79,6 +77,9 @@ public class Grid {
 
         Color tempColor = cells[col][row].getColor();
         int counter = 0;
+        if (row + 3 > rows) {
+            return false;
+        }
         for (row = row; row < row + 4; row++) {
             if (cells[col][row].getColor() == null) {
                 return false;
@@ -97,6 +98,9 @@ public class Grid {
 
     public boolean checkCol(int col, int row) {
 
+        if (col + 3 > cols) {
+            return false;
+        }
         Color tempColor = cells[col][row].getColor();
         int counter = 0;
         for (col = col; col < col + 4; col++) {
@@ -117,10 +121,14 @@ public class Grid {
 
     public boolean checkDiagonalUp(int col, int row) {
 
+        if ((col + 3) > cols || (row - 3) < 0) {
+            return false;
+        }
+
         Color tempColor = cells[col][row].getColor();
         int counter = 0;
         for (col = col; col < col + 4; col++) {
-            if (cells[col+1][row-1].getColor() == null) {
+            if (cells[col + 1][row - 1].getColor() == null) {
                 return false;
             }
 
@@ -139,9 +147,14 @@ public class Grid {
     public boolean checkDiagonalDown(int col, int row) {
 
         Color tempColor = cells[col][row].getColor();
+
+        if ((col + 3) > cols || row + 3 > rows) {
+            return false;
+        }
+
         int counter = 0;
         for (col = col; col < col + 4; col++) {
-            if (cells[col+1][row+1].getColor() == null) {
+            if (cells[col + 1][row + 1].getColor() == null) {
                 return false;
             }
 
