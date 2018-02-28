@@ -64,7 +64,7 @@ public class Grid {
 
                 if (cells[col][row].isPainted()) {
 
-                    // verificar se um destes métedos é verdadeiro para concluir o jogo
+                    // verificar se um destes métodos é verdadeiro para concluir o jogo
                     checkRow(col, row);
                     checkCol(col, row);
                     checkDiagonalUp(col, row);
@@ -79,24 +79,26 @@ public class Grid {
     public boolean checkCol(int col, int row) {
 
         Color tempColor = cells[col][row].getColor();
+        int victRow = row + 3;
 
-        int counter = 0;
-        int victCol = row + 3;
-
-        if (victCol > rows - 1 ) {
+        if (victRow > rows - 1) {
             return false;
         }
 
-        for (row = row + 1 ; row < victCol; row++) {
-            if (cells[col][row].getColor() == null) {
+        int counter = 0;
+        for (row = row + 1; row <= victRow; row++) {
+
+            if (cells[col][row].getColor() != tempColor) {
                 return false;
             }
+
 
             if (cells[col][row].getColor() == tempColor) {
                 counter++;
             }
 
             if (counter == 3) {
+                System.out.println("won col");
                 return true;
             }
         }
@@ -105,19 +107,15 @@ public class Grid {
 
     public boolean checkRow(int col, int row) {
 
+        Color tempColor = cells[col][row].getColor();
         int victCol = col + 3;
+        int counter = 0;
+
         if (victCol > cols - 1) {
-            System.out.println("saiu");
             return false;
         }
-        System.out.println(col + " " + row);
-        Color tempColor = cells[col][row].getColor();
 
-
-        int counter = 0;
         for (col = col + 1; col <= victCol; col++) {
-
-            System.out.println(col + " " + row);
 
             if (cells[col][row].getColor() != tempColor) {
                 return false;
@@ -128,7 +126,7 @@ public class Grid {
             }
 
             if (counter == 3) {
-                System.out.println("win");
+                System.out.println("won row");
                 return true;
             }
         }
@@ -137,28 +135,34 @@ public class Grid {
 
     public boolean checkDiagonalUp(int col, int row) {
 
+        //Array out of bound
+
         int victCol = col + 3;
         int victRow = row - 3;
+        Color tempColor = cells[col][row].getColor();
+        int counter = 0;
 
-        if ((victCol) > cols - 1 || (victRow) < 0) {
+        if (victCol > cols - 1 || victRow < 1) {
             return false;
         }
 
-        Color tempColor = cells[col][row].getColor();
-        int counter = 0;
-        for (col = col + 1 ; col < victCol; col++) {
-            if (cells[col + 1][row - 1].getColor() == null) {
+        row -= 1;
+        for (col = col + 1; col <= victCol; col++) {
+            System.out.println(col + " " + row);
+            if (cells[col + 1][row - 1].getColor() != tempColor) {
                 return false;
             }
 
-            if (cells[col][col].getColor() == tempColor) {
-                counter++;
+            if (cells[col][row].getColor() == tempColor) {
+                ++counter;
+                System.out.println("counter " + counter);
             }
 
             if (counter == 3) {
-                System.out.println("win");
+                System.out.println("Won Diagonal Up");
                 return true;
             }
+            row--;
         }
         return false;
     }
@@ -167,27 +171,25 @@ public class Grid {
     public boolean checkDiagonalDown(int col, int row) {
 
         Color tempColor = cells[col][row].getColor();
-
         int victCol = col + 3;
         int victRow = row + 3;
+        int counter = 0;
 
-        if ((victCol) > cols - 1 || victRow > rows - 1 ) {
+        if ((victCol) > cols - 1 || victRow > rows - 1) {
             return false;
         }
 
-        int counter = 0;
-        for (col = col + 1; col < victCol; col++) {
-            if (cells[col + 1][row + 1].getColor() == null) {
+        for (col = col + 1; col <= victCol; col++, row++) {
+            if (cells[col + 1][row + 1].getColor() != tempColor) {
                 return false;
             }
 
-            if (cells[col][col].getColor() == tempColor) {
+            if (cells[col][row].getColor() == tempColor) {
                 counter++;
             }
 
             if (counter == 3) {
-
-                System.out.println("win");
+                System.out.println("Won Diagonal Down");
                 return true;
             }
         }
