@@ -41,13 +41,10 @@ public class Grid {
                 cells[col][row].setColor(color);
                 cells[col][row].setPainted();
 
-
                 checkVictory();
                 return;
             }
-
         }
-
         // ve se é possivel/ inserir mais moedas
 
 
@@ -91,7 +88,6 @@ public class Grid {
             if (cells[col][row].getColor() != tempColor) {
                 return false;
             }
-
 
             if (cells[col][row].getColor() == tempColor) {
                 counter++;
@@ -148,18 +144,12 @@ public class Grid {
 
         row -= 1;
         for (col = col + 1; col <= victCol; col++) {
-            System.out.println(col + " " + row);
-            if (cells[col + 1][row - 1].getColor() != tempColor) {
-                return false;
-            }
 
             if (cells[col][row].getColor() == tempColor) {
                 ++counter;
-                System.out.println("counter " + counter);
             }
 
             if (counter == 3) {
-                System.out.println("Won Diagonal Up");
                 return true;
             }
             row--;
@@ -179,12 +169,12 @@ public class Grid {
             return false;
         }
 
+        row++;
         for (col = col + 1; col <= victCol; col++, row++) {
-            if (cells[col + 1][row + 1].getColor() != tempColor) {
-                return false;
-            }
 
+            System.out.println(col + " " +row);
             if (cells[col][row].getColor() == tempColor) {
+                System.out.println("counter " +counter);
                 counter++;
             }
 
